@@ -1,0 +1,14 @@
+body { font-family: 'Inter', sans-serif; margin: 0; background: #f8f9fa; color: #333; }
+nav { display: flex; justify-content: space-between; padding: 20px 5%; background: #0f172a; color: white; align-items: center; }
+.logo { font-weight: bold; font-size: 24px; }
+.logo span { color: #38bdf8; }
+header { text-align: center; padding: 60px 20px; background: #1e293b; color: white; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px 5%; }
+.video-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.video-card img { width: 100%; height: auto; }
+.video-info { padding: 15px; }
+.video-info h3 { font-size: 18px; margin: 0 0 10px; height: 45px; overflow: hidden; }
+.btn-read { background: #38bdf8; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 4px; }
+.desc { display: none; font-size: 14px; margin-top: 10px; color: #666; }
+.ebook-section { padding: 40px 5%; background: #e2e8f0; text-align: center; }
+.ebook-card { background: white; padding: 30px; border-radius: 12px; display: inline-block; max-width: 400px; }

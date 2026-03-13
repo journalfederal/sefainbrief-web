@@ -1,4 +1,4 @@
-const API_KEY = 'BURAYA_ALACAGIN_ANAHTARI_YAZ';
+const API_KEY = 'AIzaSyAKAglEkw1eNHK8GO8mo1X6qc_zgT9vPBc';
 const CHANNEL_ID = 'UCV1haSg1f6u8wfwuAsCJR_A';
 
 async function getVideos() {

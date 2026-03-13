@@ -1,14 +1,99 @@
-body { font-family: 'Inter', sans-serif; margin: 0; background: #f8f9fa; color: #333; }
-nav { display: flex; justify-content: space-between; padding: 20px 5%; background: #0f172a; color: white; align-items: center; }
-.logo { font-weight: bold; font-size: 24px; }
-.logo span { color: #38bdf8; }
-header { text-align: center; padding: 60px 20px; background: #1e293b; color: white; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px 5%; }
-.video-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-.video-card img { width: 100%; height: auto; }
-.video-info { padding: 15px; }
-.video-info h3 { font-size: 18px; margin: 0 0 10px; height: 45px; overflow: hidden; }
-.btn-read { background: #38bdf8; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 4px; }
-.desc { display: none; font-size: 14px; margin-top: 10px; color: #666; }
-.ebook-section { padding: 40px 5%; background: #e2e8f0; text-align: center; }
-.ebook-card { background: white; padding: 30px; border-radius: 12px; display: inline-block; max-width: 400px; }
+:root {
+    --bg-dark: #0a0c10;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --accent: #007aff; /* Apple Mavisi - Teknoloji ve Güven */
+    --text-main: #ffffff;
+    --text-dim: #9ca3af;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(10, 12, 16, 0.8);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -1px; }
+.logo span { color: var(--accent); }
+
+.btn-premium {
+    background: var(--accent);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* Hero Section */
+.hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #1a1f2e 0%, #0a0c10 100%);
+    padding: 0 5%;
+}
+
+.hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; }
+.hero h1 span { color: var(--accent); }
+.hero p { color: var(--text-dim); max-width: 600px; font-size: 1.2rem; }
+
+/* Video Grid */
+.container { padding: 5rem 5%; }
+.section-title { margin-bottom: 3rem; font-size: 2rem; border-left: 4px solid var(--accent); padding-left: 1rem; }
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.video-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.video-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+
+.video-card iframe { width: 100%; aspect-ratio: 16/9; border: none; }
+
+.video-info { padding: 1.5rem; }
+.video-info h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: #fff; }
+
+/* E-Kitap Kartı */
+.ebook-card {
+    background: linear-gradient(135deg, #1a1f2e 0%, #0a0c10 100%);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px dashed var(--accent);
+    text-align: center;
+}
+
+/* Mobil Düzenlemeler */
+@media (max-width: 768px) {
+    .video-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.8rem; }
+}

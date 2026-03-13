@@ -3,39 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sefa In Brief | Stratejik Analiz</title>
+    <title>Sefa In Brief | Küresel Strateji ve Analiz</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
+    <nav class="navbar">
         <div class="logo">SEFA <span>IN BRIEF</span></div>
-        <div class="menu">
-            <a href="#ekitap">E-Kitaplar</a>
-            <a href="https://www.youtube.com/channel/UCV1haSg1f6u8wfwuAsCJR_A" target="_blank">YouTube</a>
+        <div class="nav-links">
+            <a href="#videos">Analizler</a>
+            <a href="#library" class="btn-premium">E-Kitaplar</a>
         </div>
     </nav>
 
-    <header>
-        <h1>Küresel Analiz ve Stratejik Özetler</h1>
-        <p>Jeopolitik dünyayı kısa ve öz analizlerle keşfedin.</p>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Küresel Jeopolitik <br><span>Strateji Merkezi</span></h1>
+            <p>Yapay zeka destekli derin analizler ve dünya gündeminin perde arkası.</p>
+        </div>
     </header>
 
-    <section id="ekitap" class="ebook-section">
-        <h2>Ücretsiz E-Kitaplar</h2>
-        <div class="ebook-card">
-            <h3>2026 Strateji Raporu</h3>
-            <p>Yeni dünya düzeni ve askeri kapasite analizleri.</p>
-            <a href="#" class="btn-download">Hemen İndir (PDF)</a>
+    <section id="videos" class="container">
+        <h2 class="section-title">Son Analiz Videoları</h2>
+        <div id="video-grid" class="video-grid">
+            <div class="loading">Sistem verileri işleniyor...</div>
         </div>
     </section>
 
-    <main>
-        <h2>Son Videolar</h2>
-        <div id="video-grid" class="grid">
-            <p id="loading">Yükleniyor...</p>
+    <section id="library" class="library-section">
+        <div class="container">
+            <h2 class="section-title">Strateji Kütüphanesi</h2>
+            <div class="ebook-card">
+                <div class="ebook-info">
+                    <h3>2026 Küresel Risk Haritası</h3>
+                    <p>Finansal piyasalar ve askeri kapasite üzerine derinlemesine inceleme.</p>
+                    <button class="btn-download">Yakında İndirilebilir</button>
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Sefa In Brief. Tüm Hakları Saklıdır.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

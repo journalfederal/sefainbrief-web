@@ -1,118 +1,67 @@
 :root {
-    --bg-light: #ffffff;
-    --bg-alt: #f8f9fa;
-    --text-main: #1a1a1a;
-    --text-dim: #6c757d;
-    --accent: #b30000; /* Stratejik ve ciddi bir vurgu rengi */
-    --border-color: #e9ecef;
+    --white: #ffffff;
+    --off-white: #fcfcfc;
+    --light-grey: #f0f2f5;
+    --text-dark: #121212;
+    --text-muted: #5f6368;
+    --accent-red: #cc0000;
+    --border: #e8eaed;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: var(--bg-light);
-    color: var(--text-main);
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1.6;
+    background-color: var(--white);
+    color: var(--text-dark);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
 }
-
-/* Başlıklar için serif font kullanılarak gazetecilik/haber hissiyatı verildi */
-h1, h2, h3 { font-family: 'Merriweather', serif; }
 
 /* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
-    background: var(--bg-light);
-    border-bottom: 1px solid var(--border-color);
+    padding: 0.8rem 5%;
+    border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
+    background: rgba(255, 255, 255, 0.95);
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    backdrop-filter: blur(5px);
 }
 
-.logo-container { display: flex; align-items: center; gap: 15px; }
-.logo-img { height: 45px; width: auto; object-fit: contain; }
-.logo-text { font-size: 1.3rem; font-weight: 700; font-family: 'Open Sans', sans-serif; }
-.logo-text span { color: var(--accent); }
+.logo-area { display: flex; align-items: center; gap: 12px; }
+.main-logo { height: 40px; width: auto; }
+.brand-name { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; }
+.brand-name span { color: var(--accent-red); }
 
-.nav-links { display: flex; align-items: center; gap: 20px; }
-.nav-links a { text-decoration: none; color: var(--text-main); font-weight: 600; transition: color 0.3s; }
-.nav-links a:hover { color: var(--accent); }
+.nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; margin-left: 20px; }
+.cta-button { background: var(--accent-red); color: white !important; padding: 8px 16px; border-radius: 4px; }
 
-.btn-subscribe {
-    background: var(--accent);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    color: white !important;
-}
+/* Hero */
+.hero { background: var(--off-white); padding: 5rem 5%; text-align: center; border-bottom: 1px solid var(--border); }
+.badge { color: var(--accent-red); font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1.5px; }
+.hero h1 { font-family: 'Merriweather', serif; font-size: 3rem; margin: 1rem 0; }
+.hero h1 span { color: var(--accent-red); }
+.hero p { max-width: 600px; margin: 0 auto; color: var(--text-muted); font-size: 1.1rem; }
 
-/* Hero Section */
-.hero {
-    background-color: var(--bg-alt);
-    padding: 4rem 5%;
-    text-align: center;
-    border-bottom: 1px solid var(--border-color);
-}
+/* News Grid */
+.content-wrapper { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; }
+.feed-header { border-bottom: 3px solid var(--text-dark); margin-bottom: 2rem; padding-bottom: 0.5rem; }
+.news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; }
 
-.intel-tag {
-    display: inline-block;
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: var(--accent);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-}
+.video-card { border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+.video-card iframe { width: 100%; aspect-ratio: 16/9; border: none; border-radius: 2px; background: #000; }
+.video-info h3 { font-family: 'Merriweather', serif; margin-top: 1rem; font-size: 1.2rem; line-height: 1.3; cursor: pointer; }
+.video-info h3:hover { color: var(--accent-red); }
+.date-tag { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; font-weight: 600; text-transform: uppercase; }
 
-.hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; color: #000; line-height: 1.2; }
-.hero h1 span { color: var(--accent); }
-.hero p { color: var(--text-dim); max-width: 700px; margin: 0 auto; font-size: 1.1rem; }
+footer { padding: 3rem; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
 
-/* Video Grid (Haber Sitesi Düzeni) */
-.container { padding: 4rem 5%; max-width: 1400px; margin: 0 auto; }
-.section-header { margin-bottom: 2rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
-.section-title { font-size: 1.8rem; color: #000; }
-
-.video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-}
-
-.video-card {
-    background: var(--bg-light);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.video-card:hover { 
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08); 
-}
-
-.video-card iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
-
-.video-info { padding: 1.5rem; }
-.video-info h3 { font-size: 1.1rem; color: #000; margin-bottom: 0.8rem; line-height: 1.4; }
-.video-info p { font-size: 0.85rem; color: var(--text-dim); font-weight: 600; text-transform: uppercase; }
-
-footer { 
-    text-align: center; 
-    padding: 2rem; 
-    background: var(--bg-alt); 
-    border-top: 1px solid var(--border-color); 
-    color: var(--text-dim); 
-}
-
-/* Mobil Uyumluluk (Responsive) */
+/* Mobile */
 @media (max-width: 768px) {
-    .navbar { flex-direction: column; gap: 15px; padding: 1rem; }
-    .nav-links { display: flex; flex-direction: column; width: 100%; text-align: center; gap: 10px; }
-    .btn-subscribe { display: block; width: 100%; }
-    .hero { padding: 3rem 1rem; }
+    .navbar { flex-direction: column; gap: 10px; }
+    .hero h1 { font-size: 2rem; }
+    .news-grid { grid-template-columns: 1fr; }
 }

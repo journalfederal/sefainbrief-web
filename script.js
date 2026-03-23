@@ -3,6 +3,8 @@ const CHANNEL_ID = 'UC6Wv9V7q4X8Y3Mh2vG9Fk0A';
 
 async function fetchBriefings() {
     const grid = document.getElementById('video-grid');
+    // search yerine playlistItems kullanmak kota dostudur ancak kanalın 'uploads' playlist id'sini gerektirir.
+    // Şimdilik search ile devam ediyoruz.
     const url = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=6&type=video`;
 
     try {
@@ -10,17 +12,22 @@ async function fetchBriefings() {
         const data = await response.json();
 
         if (data.error) {
+            console.error("YouTube API Hatası:", data.error.message);
             throw new Error(data.error.message);
         }
 
         grid.innerHTML = '';
 
+        if (!data.items || data.items.length === 0) {
+            grid.innerHTML = '<p>No briefings found at the moment.</p>';
+            return;
+        }
+
         data.items.forEach(item => {
             const date = new Date(item.snippet.publishedAt).toLocaleDateString('en-US', {
-                month: 'short', day: 'numeric', year: 'numeric'
+                month: 'long', day: 'numeric', year: 'numeric'
             });
 
-            // HTML karakterlerini temizle (Örn: &#39; -> ')
             const doc = new DOMParser().parseFromString(item.snippet.title, "text/html");
             const title = doc.documentElement.textContent;
 
@@ -35,10 +42,11 @@ async function fetchBriefings() {
             `;
         });
     } catch (err) {
-        console.error("Feed Error:", err);
         grid.innerHTML = `
-            <div style="grid-column: 1/-1; padding: 20px; background: #fff5f5; border: 1px solid #feb2b2; border-radius: 4px; color: #c53030;">
-                <strong>Connection Alert:</strong> The live feed is currently restricted. Please ensure the API Key is active in Google Cloud Console.
+            <div style="grid-column: 1/-1; padding: 30px; border: 1px solid #fecaca; background: #fef2f2; color: #991b1b; text-align: center; border-radius: 8px;">
+                <p><strong>Intelligence Feed Offline</strong></p>
+                <p style="font-size: 0.9rem; margin-top: 5px;">Error: ${err.message}</p>
+                <p style="font-size: 0.8rem; margin-top: 10px;">Please ensure your YouTube API Key is active and has no domain restrictions in Google Cloud Console.</p>
             </div>`;
     }
 }

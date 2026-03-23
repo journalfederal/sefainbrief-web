@@ -1,99 +1,118 @@
 :root {
-    --bg-dark: #0a0c10;
-    --card-bg: rgba(255, 255, 255, 0.05);
-    --accent: #007aff; /* Apple Mavisi - Teknoloji ve Güven */
-    --text-main: #ffffff;
-    --text-dim: #9ca3af;
+    --bg-light: #ffffff;
+    --bg-alt: #f8f9fa;
+    --text-main: #1a1a1a;
+    --text-dim: #6c757d;
+    --accent: #b30000; /* Stratejik ve ciddi bir vurgu rengi */
+    --border-color: #e9ecef;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: var(--bg-dark);
+    background-color: var(--bg-light);
     color: var(--text-main);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
-    overflow-x: hidden;
 }
+
+/* Başlıklar için serif font kullanılarak gazetecilik/haber hissiyatı verildi */
+h1, h2, h3 { font-family: 'Merriweather', serif; }
 
 /* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%;
-    background: rgba(10, 12, 16, 0.8);
-    backdrop-filter: blur(10px);
-    position: fixed;
-    width: 100%;
+    padding: 1rem 5%;
+    background: var(--bg-light);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -1px; }
-.logo span { color: var(--accent); }
+.logo-container { display: flex; align-items: center; gap: 15px; }
+.logo-img { height: 45px; width: auto; object-fit: contain; }
+.logo-text { font-size: 1.3rem; font-weight: 700; font-family: 'Open Sans', sans-serif; }
+.logo-text span { color: var(--accent); }
 
-.btn-premium {
+.nav-links { display: flex; align-items: center; gap: 20px; }
+.nav-links a { text-decoration: none; color: var(--text-main); font-weight: 600; transition: color 0.3s; }
+.nav-links a:hover { color: var(--accent); }
+
+.btn-subscribe {
     background: var(--accent);
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    color: white !important;
 }
 
 /* Hero Section */
 .hero {
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: var(--bg-alt);
+    padding: 4rem 5%;
     text-align: center;
-    background: radial-gradient(circle at center, #1a1f2e 0%, #0a0c10 100%);
-    padding: 0 5%;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; }
-.hero h1 span { color: var(--accent); }
-.hero p { color: var(--text-dim); max-width: 600px; font-size: 1.2rem; }
+.intel-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
 
-/* Video Grid */
-.container { padding: 5rem 5%; }
-.section-title { margin-bottom: 3rem; font-size: 2rem; border-left: 4px solid var(--accent); padding-left: 1rem; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; color: #000; line-height: 1.2; }
+.hero h1 span { color: var(--accent); }
+.hero p { color: var(--text-dim); max-width: 700px; margin: 0 auto; font-size: 1.1rem; }
+
+/* Video Grid (Haber Sitesi Düzeni) */
+.container { padding: 4rem 5%; max-width: 1400px; margin: 0 auto; }
+.section-header { margin-bottom: 2rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+.section-title { font-size: 1.8rem; color: #000; }
 
 .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .video-card {
-    background: var(--card-bg);
-    border-radius: 15px;
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
     overflow: hidden;
-    transition: transform 0.3s ease;
-    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.video-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+.video-card:hover { 
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08); 
+}
 
-.video-card iframe { width: 100%; aspect-ratio: 16/9; border: none; }
+.video-card iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
 
 .video-info { padding: 1.5rem; }
-.video-info h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: #fff; }
+.video-info h3 { font-size: 1.1rem; color: #000; margin-bottom: 0.8rem; line-height: 1.4; }
+.video-info p { font-size: 0.85rem; color: var(--text-dim); font-weight: 600; text-transform: uppercase; }
 
-/* E-Kitap Kartı */
-.ebook-card {
-    background: linear-gradient(135deg, #1a1f2e 0%, #0a0c10 100%);
-    padding: 3rem;
-    border-radius: 20px;
-    border: 1px dashed var(--accent);
-    text-align: center;
+footer { 
+    text-align: center; 
+    padding: 2rem; 
+    background: var(--bg-alt); 
+    border-top: 1px solid var(--border-color); 
+    color: var(--text-dim); 
 }
 
-/* Mobil Düzenlemeler */
+/* Mobil Uyumluluk (Responsive) */
 @media (max-width: 768px) {
-    .video-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 2.8rem; }
+    .navbar { flex-direction: column; gap: 15px; padding: 1rem; }
+    .nav-links { display: flex; flex-direction: column; width: 100%; text-align: center; gap: 10px; }
+    .btn-subscribe { display: block; width: 100%; }
+    .hero { padding: 3rem 1rem; }
 }

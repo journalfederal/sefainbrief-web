@@ -221,62 +221,31 @@ function Home() {
       </div>
 
       <section id="top" className="relative overflow-hidden bg-[#152e4a] text-[#f9f5ea]">
-        <div className="absolute -right-8 top-16 hidden h-72 w-72 rounded-full border border-[#f9f5ea]/10 lg:block" />
-        <div className="absolute right-20 top-44 hidden h-72 w-72 rounded-full border border-[#f9f5ea]/10 lg:block" />
-        <div className="arrow-mark right-[14%] top-20 rotate-[-8deg] opacity-90" />
-        <div className="arrow-mark right-[4%] top-36 scale-[.65] rotate-[8deg] opacity-70" />
-        <div className="mx-auto grid max-w-[1320px] gap-10 px-5 pb-14 pt-12 sm:gap-14 sm:px-8 sm:pb-20 sm:pt-16 lg:grid-cols-[1.18fr_.82fr] lg:items-end lg:gap-20 lg:pb-28 lg:pt-24">
-          <div className="relative z-10">
+        <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-6 px-5 py-9 sm:px-8 sm:py-12">
+          <div className="relative z-10 max-w-2xl">
             <div className="reveal"><SectionLabel light>Independent analysis / straight to the point</SectionLabel></div>
-            <h1 className="reveal delay-1 mt-6 max-w-4xl font-display text-[clamp(3rem,13vw,8.6rem)] font-bold leading-[.86] tracking-[-0.085em] sm:mt-7 sm:leading-[.82]">
-              Power<br /><span className="text-[#d9362e]">made</span> legible.
-            </h1>
-            <p className="reveal delay-2 mt-8 max-w-xl text-base leading-7 text-white/70 sm:text-lg">Sefa in Brief breaks down the decisions, deals and rivalries moving the world — without the theatre.</p>
-            <div className="reveal delay-3 mt-9 flex flex-wrap items-center gap-4">
-              <button data-testid="button-hero-latest" onClick={() => scrollTo('latest')} className="signal-button flex items-center gap-2 bg-[#f9f5ea] px-5 py-3 font-mono-ui text-[10px] uppercase tracking-[0.14em] text-[#152e4a]">Read the latest <ArrowDownRight size={14} /></button>
-              <a data-testid="link-hero-youtube" href={channel.channelUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-2 py-3 font-mono-ui text-[10px] uppercase tracking-[0.14em] text-white/70 transition-colors hover:text-[#f6d34a]"><Youtube size={15} /> Visit the channel</a>
+            <h1 className="reveal delay-1 mt-4 font-display text-[clamp(2.5rem,8vw,5.8rem)] font-bold leading-[.88] tracking-[-0.08em]">Power, policy<br /><span className="text-[#f6d34a]">in context.</span></h1>
+            <p className="reveal delay-2 mt-5 max-w-xl text-sm leading-6 text-white/70 sm:text-base">Follow the decisions, deals and shifting power dynamics through concise video briefings.</p>
+            <div className="reveal delay-3 mt-6 flex flex-wrap items-center gap-4">
+              <button data-testid="button-hero-latest" onClick={() => scrollTo('latest')} className="signal-button flex items-center gap-2 bg-[#f6d34a] px-4 py-2.5 font-mono-ui text-[10px] uppercase tracking-[0.14em] text-[#152e4a]">Latest videos <ArrowDownRight size={14} /></button>
+              <a data-testid="link-hero-youtube" href={channel.channelUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[0.14em] text-white/65 transition-colors hover:text-[#f6d34a]"><Youtube size={15} /> YouTube channel</a>
             </div>
           </div>
-          <div className="reveal delay-2 relative z-10 flex justify-end lg:pb-2">
-            <div className="w-full max-w-[390px]">
-              <div className="mb-4 flex items-center justify-between font-mono-ui text-[9px] uppercase tracking-[0.16em] text-white/50"><span>On the desk</span><span className="text-[#f6d34a]">Signal / live</span></div>
-              <div className="avatar-frame relative aspect-square max-h-[320px] overflow-hidden bg-[#b42e2d] sm:aspect-[4/5] sm:max-h-[430px]">
-                {channel.bannerUrl ? <img src={channel.bannerUrl} alt="" className="absolute inset-0 h-full w-full object-cover opacity-20 mix-blend-screen" /> : null}
-                <div className="absolute inset-x-7 bottom-7 z-10 border-t border-white/40 pt-4">
-                  <div className="font-mono-ui text-[9px] uppercase tracking-[0.18em] text-white/65">Sefa in Brief</div>
-                  <div className="mt-1 font-display text-3xl font-bold leading-none text-white">The world,<br />in context.</div>
-                </div>
-                <ImageOrInitials src={channel.avatarUrl} alt="Sefa, host of Sefa in Brief" name={channel.name} className="absolute inset-x-[10%] top-[8%] h-[78%] bg-transparent sm:inset-x-[12%] sm:top-[12%] sm:h-[70%]" />
-                <div className="absolute -right-2 top-8 h-20 w-20 rounded-full border-[10px] border-[#f6d34a]/80" />
-              </div>
-              <div className="mt-4 flex items-end justify-between">
-                <div><div className="font-display text-xl font-bold">{channel.name}</div><div className="mt-1 font-mono-ui text-[9px] uppercase tracking-[0.16em] text-white/50">{channel.handle} / YouTube</div></div>
-                <div className="text-right"><div className="font-display text-xl font-bold">{formatSubscribers(channel.subscribers)}</div><div className="font-mono-ui text-[9px] uppercase tracking-[0.16em] text-white/50">viewers & counting</div></div>
-              </div>
+          <a href={channel.channelUrl} target="_blank" rel="noreferrer" className="reveal block w-[92px] shrink-0 self-start overflow-hidden rounded-sm border border-white/20 bg-[#b42e2d] sm:w-[150px] lg:w-[190px]">
+            <div className="relative aspect-square">
+              {channel.avatarUrl ? <img src={channel.avatarUrl} alt="Sefa in Brief" className="absolute inset-0 h-full w-full object-cover" /> : <div className="flex h-full items-center justify-center font-display text-3xl font-bold">SI</div>}
+              <span className="absolute bottom-0 left-0 right-0 bg-[#152e4a]/90 px-3 py-2 font-mono-ui text-[9px] uppercase tracking-[0.14em] text-white/80">{formatSubscribers(channel.subscribers)} subscribers</span>
             </div>
-          </div>
+          </a>
         </div>
       </section>
 
-      <section id="latest" className="mx-auto max-w-[1320px] px-5 py-20 sm:px-8 lg:py-28">
-          <div className="reveal flex flex-wrap items-end justify-between gap-5 border-b border-[#d8d2c6] pb-5">
-          <div><SectionLabel>Latest dispatches</SectionLabel><h2 className="mt-4 font-display text-4xl font-bold tracking-[-0.06em] text-[#152e4a] sm:text-6xl">What matters now.</h2></div>
-          <div className="flex max-w-xs items-end gap-3 text-right font-mono-ui text-[10px] uppercase leading-5 tracking-[0.12em] text-slate-500">
-            <span>{feedError ? 'Live feed is resting — showing the desk archive.' : loading ? 'Connecting to the live desk…' : `${displayVideos.length} briefings / newest first`}</span>
-            {feedError ? <button data-testid="button-retry-feed" onClick={() => { setFeedError(false); setLoading(true); setFeedAttempt((attempt) => attempt + 1); }} className="shrink-0 border-b border-[#d9362e] pb-1 text-[#d9362e] transition-colors hover:text-[#152e4a]">Retry</button> : null}
-          </div>
-        </div>
-        {loading ? <div className="mt-10 grid gap-6 lg:grid-cols-[1.3fr_.7fr]"><SkeletonCard /><div className="space-y-4"><SkeletonCard /><SkeletonCard /></div></div> : <div className="mt-8 grid gap-8 lg:mt-10 lg:grid-cols-[1.2fr_.8fr]">
-          {featured ? <a data-testid={`card-featured-video-${featured.id}`} href={featured.videoUrl} target="_blank" rel="noreferrer" className="reveal group paper-panel block p-3 sm:p-4">
-            <Thumbnail video={featured} index={0} />
-            <div className="grid gap-5 p-2 pt-5 sm:grid-cols-[1fr_auto] sm:items-end"><div><div className="mb-3 flex items-center gap-2 font-mono-ui text-[9px] uppercase tracking-[0.16em] text-[#d9362e]"><Clock3 size={12} /> {formatDate(featured.publishedAt)} <span className="text-slate-400">/</span> Lead story</div><h3 className="max-w-2xl font-display text-3xl font-bold leading-[.95] tracking-[-0.05em] text-[#152e4a] sm:text-5xl">{featured.title}</h3><p className="mt-4 max-w-xl text-sm leading-6 text-slate-600">{featured.description || 'A clear-eyed briefing on the forces behind the headline.'}</p></div><span className="hidden h-11 w-11 items-center justify-center border border-[#d8d2c6] text-[#d9362e] transition-colors group-hover:bg-[#d9362e] group-hover:text-[#f9f5ea] sm:flex"><ArrowUpRight size={18} /></span></div>
-          </a> : null}
-          <div className="space-y-4">
-            {rest.slice(0, 3).map((video, index) => <a data-testid={`row-video-${video.id}`} key={video.id} href={video.videoUrl} target="_blank" rel="noreferrer" className="reveal delay-1 group flex flex-col gap-3 border-b border-[#d8d2c6] pb-5 sm:flex-row sm:gap-4 sm:pb-4">
-              <div className="w-full shrink-0 sm:w-[42%]"><Thumbnail video={video} index={index + 1} /></div>
-              <div className="flex flex-col justify-between py-0.5 sm:py-1"><div><div className="font-mono-ui text-[9px] uppercase tracking-[0.13em] text-slate-500">{formatDate(video.publishedAt)}</div><h3 className="mt-2 font-display text-xl font-bold leading-[.98] tracking-[-0.04em] text-[#152e4a] transition-colors group-hover:text-[#d9362e] sm:text-2xl">{video.title}</h3></div><span className="mt-3 flex items-center gap-1 font-mono-ui text-[9px] uppercase tracking-[0.14em] text-[#d9362e]">Open briefing <ChevronRight size={12} /></span></div>
-            </a>)}
-          </div>
+      <section id="latest" className="mx-auto max-w-[1320px] px-0 pb-20 pt-7 sm:px-8 sm:pt-9 lg:pb-28">
+        {loading ? <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"><SkeletonCard /><SkeletonCard /><SkeletonCard /></div> : <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {displayVideos.map((video, index) => <a data-testid={`card-latest-video-${video.id}`} key={video.id} href={video.videoUrl} target="_blank" rel="noreferrer" className="reveal group paper-panel block overflow-hidden">
+            <Thumbnail video={video} index={index} />
+            <div className="p-5"><div className="flex items-center gap-2 font-mono-ui text-[9px] uppercase tracking-[0.14em] text-[#d9362e]"><Clock3 size={12} /> {formatDate(video.publishedAt)}</div><h3 className="mt-3 font-display text-2xl font-bold leading-[.98] tracking-[-0.045em] text-[#152e4a] transition-colors group-hover:text-[#d9362e]">{video.title}</h3><p className="mt-3 line-clamp-2 text-sm leading-6 text-slate-600">{video.description || 'Explore the forces and power dynamics behind the headline in a concise briefing.'}</p><span className="mt-5 flex items-center gap-1 font-mono-ui text-[9px] uppercase tracking-[0.14em] text-[#d9362e]">Read more <ChevronRight size={12} /></span></div>
+          </a>)}
         </div>}
       </section>
 

@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: channel
+    description: Public Sefa in Brief channel feed
 paths:
   /healthz:
     get:
@@ -24,6 +26,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /channel-feed:
+    get:
+      operationId: getChannelFeed
+      tags: [channel]
+      summary: Get the latest Sefa in Brief videos
+      description: Reads the channel's public YouTube feed and returns its latest videos in reverse chronological order.
+      responses:
+        "200":
+          description: Channel profile and latest videos
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChannelFeedResponse"
+        "502":
+          description: Upstream YouTube feed unavailable
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +54,74 @@ components:
           type: string
       required:
         - status
+    ChannelProfile:
+      type: object
+      properties:
+        name:
+          type: string
+        handle:
+          type: string
+        description:
+          type: string
+        channelUrl:
+          type: string
+        avatarUrl:
+          type: string
+        bannerUrl:
+          type: string
+        subscribers:
+          type: ["string", "null"]
+        videoCount:
+          type: ["integer", "null"]
+      required:
+        - name
+        - handle
+        - description
+        - channelUrl
+        - avatarUrl
+        - bannerUrl
+        - subscribers
+        - videoCount
+    ChannelVideo:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        publishedAt:
+          type: string
+          format: date-time
+        thumbnailUrl:
+          type: string
+        videoUrl:
+          type: string
+      required:
+        - id
+        - title
+        - description
+        - publishedAt
+        - thumbnailUrl
+        - videoUrl
+    ChannelFeedResponse:
+      type: object
+      properties:
+        channel:
+          $ref: "#/components/schemas/ChannelProfile"
+        videos:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChannelVideo"
+      required:
+        - channel
+        - videos
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
 

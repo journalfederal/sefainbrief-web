@@ -1,6 +1,6 @@
-# [Project name]
+# Sefa in Brief
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+An English-language editorial site for the Sefa in Brief YouTube channel, combining channel promotion with an automatically refreshed, date-sorted video briefing archive.
 
 ## Run & Operate
 
@@ -22,23 +22,29 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/sefain-brief-site` — the deployable mobile-first React/Vite website.
+- `artifacts/api-server/src/routes/channel-feed.ts` — the public YouTube RSS adapter and channel profile data.
+- `lib/api-spec/openapi.yaml` — the source-of-truth contract for the channel feed endpoint.
+- `artifacts/sefain-brief-site/src/index.css` — the editorial theme, typography, responsive rules, and motion.
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- YouTube's public RSS feed is read server-side so the browser does not depend on cross-origin feed access.
+- The feed is sorted by `publishedAt` on the server and refreshed by the page every five minutes while open.
+- The visual system follows the channel reference: briefing-room navy, signal red, market yellow, paper background, and editorial typography.
+- The UI keeps a small local fallback archive so the promotional page remains usable when YouTube is temporarily unavailable.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+Visitors can understand the channel quickly, open the latest briefings, browse the current archive, visit YouTube, and subscribe. New public uploads are pulled into the site automatically and shown newest-first.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- All user-facing copy is in English.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- The frontend workflow supplies `PORT` and `BASE_PATH`; run the managed workflow for preview/build verification.
 
 ## Pointers
 

@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Sefain Brief"
+description = "An English-language editorial website for the Sefain Brief YouTube channel, with channel storytelling, live video updates, and a mobile-first viewing experience."
+version = "1.0.0"
+id = "artifacts/sefain-brief-site"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22946
+
+[services.development]
+run = "pnpm --filter @workspace/sefain-brief-site run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/sefain-brief-site", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/sefain-brief-site/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22946"
+BASE_PATH = "/"

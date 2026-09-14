@@ -5,9 +5,6 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
-export interface HealthStatus {
-  status: string;
-}
 
 export interface ChannelProfile {
   name: string;
@@ -21,22 +18,3 @@ export interface ChannelProfile {
   /** @nullable */
   videoCount: number | null;
 }
-
-export interface ChannelVideo {
-  id: string;
-  title: string;
-  description: string;
-  publishedAt: string;
-  thumbnailUrl: string;
-  videoUrl: string;
-}
-
-export interface ChannelFeedResponse {
-  channel: ChannelProfile;
-  videos: ChannelVideo[];
-}
-
-export interface ErrorResponse {
-  error: string;
-}
-
